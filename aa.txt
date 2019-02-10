@@ -1,0 +1,96 @@
+package leetcode;
+
+import java.io.*;
+import java.util.*;
+
+public class ForClass extends ArrayList implements Serializable, Runnable {
+
+    private String isString;
+    public int isInt;
+    private ArrayList<String> arrayList = null;
+
+    private LinkedList<String> linkedList;
+    private TreeMap<String, String> treeMap;
+    private HashSet<Object> objects;
+    private TreeSet<Object> objectTreeSet;
+
+    @Override
+    public void run() {
+
+        File dest=new File("dest");
+        OutputStream out=null;
+        try {
+            out=new FileOutputStream(dest,false);//if append set true
+            String msg="come on!";
+            byte[] data=msg.getBytes();
+            out.write(data,0,data.length);
+            out.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
+    private String fReString(int a, String b) {
+        int c = a;
+        c += 1;
+        String cc = String.valueOf(c);
+        return b + cc;
+    }
+
+    public int aa(int a, int b) {
+        return a + b;
+    }
+
+    public static void copyFile(String srcPath,String destPath){
+        InputStream is = null;
+        OutputStream out=null;
+
+        try {
+            is = new FileInputStream(srcPath);
+            int len=-1;
+            byte[] buffer=new byte[1024*10];
+            out=new FileOutputStream(destPath,true);//if append set true
+            while ((len = is.read(buffer)) != -1) {
+                out.write(buffer,0,len);
+            }
+            out.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // close the last open one, then the first one
+            try {
+                if (out != null) {
+                    out.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (is != null) {
+                    is.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+    public static void main(String[] args) {
+        copyFile("D:\\javas\\java_learning\\src\\leetcode\\ForClass.java","aa.txt");
+    }
+
+
+}
+
