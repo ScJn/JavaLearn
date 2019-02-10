@@ -1,6 +1,7 @@
-package design_pattern.factory;
+package design_pattern.factory.factoryMethod;
 
 public class BMW implements Car {
+
 
     @Override
     public void run() {

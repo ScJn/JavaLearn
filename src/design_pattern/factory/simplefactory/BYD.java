@@ -1,4 +1,4 @@
-package design_pattern.factory;
+package design_pattern.factory.simplefactory;
 
 public class BYD implements Car {
     @Override

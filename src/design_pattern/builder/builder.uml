@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="206.85000000000002" y="0.0">design_pattern.builder.Cpu</node>
+    <node x="275.33208333333334" y="440.0">design_pattern.builder.TestBuilder</node>
+    <node x="40.083333333333314" y="160.0">design_pattern.builder.IphoneBuilder</node>
+    <node x="85.44583333333335" y="260.0">design_pattern.builder.MyIPhoneBuilder</node>
+    <node x="407.89166666666665" y="0.0">design_pattern.builder.Screen</node>
+    <node x="0.0" y="0.0">design_pattern.builder.Battery</node>
+    <node x="258.84875" y="260.0">design_pattern.builder.PhoneDirector</node>
+    <node x="345.7083333333333" y="160.0">design_pattern.builder.Iphone</node>
+    <node x="230.58208333333334" y="360.0">design_pattern.builder.IPhoneDirector</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="design_pattern.builder.IphoneBuilder" target="design_pattern.builder.Screen">
+      <point x="43.33333333333334" y="-15.0" />
+      <point x="148.41666666666666" y="120.0" />
+      <point x="415.14166666666665" y="120.0" />
+      <point x="-36.25" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.MyIPhoneBuilder" target="design_pattern.builder.IphoneBuilder">
+      <point x="-21.0" y="-15.0" />
+      <point x="137.94583333333335" y="220.0" />
+      <point x="105.08333333333331" y="220.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.Iphone" target="design_pattern.builder.Cpu">
+      <point x="-7.416666666666686" y="-15.0" />
+      <point x="382.79166666666663" y="60.0" />
+      <point x="260.1" y="60.0" />
+      <point x="17.75" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.IPhoneDirector" target="design_pattern.builder.MyIPhoneBuilder">
+      <point x="-25.3125" y="-15.0" />
+      <point x="272.76958333333334" y="320.0" />
+      <point x="195.69583333333335" y="320.0" />
+      <point x="36.75" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.IPhoneDirector" target="design_pattern.builder.Screen">
+      <point x="59.0625" y="-15.0" />
+      <point x="357.14458333333334" y="340.0" />
+      <point x="482.35" y="340.0" />
+      <point x="482.35" y="140.0" />
+      <point x="487.64166666666665" y="140.0" />
+      <point x="36.25" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.IPhoneDirector" target="design_pattern.builder.Battery">
+      <point x="-59.0625" y="-15.0" />
+      <point x="239.01958333333334" y="340.0" />
+      <point x="2.5833333333333144" y="340.0" />
+      <point x="2.5833333333333144" y="140.0" />
+      <point x="7.416666666666629" y="140.0" />
+      <point x="-37.08333333333337" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.MyIPhoneBuilder" target="design_pattern.builder.Cpu">
+      <point x="0.0" y="-15.0" />
+      <point x="158.94583333333335" y="210.0" />
+      <point x="180.58333333333331" y="210.0" />
+      <point x="180.58333333333331" y="100.0" />
+      <point x="224.60000000000002" y="100.0" />
+      <point x="-17.75" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.TestBuilder" target="design_pattern.builder.Iphone">
+      <point x="37.666666666666686" y="-15.0" />
+      <point x="369.49875000000003" y="415.0" />
+      <point x="438.98625" y="415.0" />
+      <point x="438.98625" y="220.0" />
+      <point x="423.5833333333333" y="220.0" />
+      <point x="33.374999999999986" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.IphoneBuilder" target="design_pattern.builder.Battery">
+      <point x="-43.33333333333334" y="-15.0" />
+      <point x="61.74999999999997" y="140.0" />
+      <point x="51.916666666666686" y="140.0" />
+      <point x="7.416666666666686" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.IPhoneDirector" target="design_pattern.builder.Iphone">
+      <point x="25.3125" y="-15.0" />
+      <point x="323.39458333333334" y="320.0" />
+      <point x="400.34875" y="320.0" />
+      <point x="400.34875" y="220.0" />
+      <point x="379.0833333333333" y="220.0" />
+      <point x="-11.125" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.MyIPhoneBuilder" target="design_pattern.builder.Battery">
+      <point x="-63.0" y="-15.0" />
+      <point x="95.94583333333335" y="240.0" />
+      <point x="13.583333333333314" y="240.0" />
+      <point x="13.583333333333314" y="130.0" />
+      <point x="22.25" y="130.0" />
+      <point x="-22.25" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.IPhoneDirector" target="design_pattern.builder.Cpu">
+      <point x="-8.4375" y="-15.0" />
+      <point x="289.64458333333334" y="310.0" />
+      <point x="248.34875" y="310.0" />
+      <point x="5.916666666666686" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.Iphone" target="design_pattern.builder.Battery">
+      <point x="-22.25" y="-15.0" />
+      <point x="367.9583333333333" y="70.0" />
+      <point x="81.58333333333337" y="70.0" />
+      <point x="37.08333333333337" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.IphoneBuilder" target="design_pattern.builder.Cpu">
+      <point x="0.0" y="-15.0" />
+      <point x="105.08333333333331" y="90.0" />
+      <point x="212.7666666666667" y="90.0" />
+      <point x="-29.583333333333314" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.Iphone" target="design_pattern.builder.Screen">
+      <point x="22.25" y="-15.0" />
+      <point x="412.4583333333333" y="130.0" />
+      <point x="429.64166666666665" y="130.0" />
+      <point x="-21.75" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.TestBuilder" target="design_pattern.builder.IPhoneDirector">
+      <point x="0.0" y="-15.0" />
+      <point x="33.75" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.MyIPhoneBuilder" target="design_pattern.builder.Screen">
+      <point x="42.0" y="-15.0" />
+      <point x="200.94583333333335" y="230.0" />
+      <point x="460.35" y="230.0" />
+      <point x="460.35" y="140.0" />
+      <point x="458.64166666666665" y="140.0" />
+      <point x="7.25" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.PhoneDirector" target="design_pattern.builder.Iphone">
+      <point x="0.0" y="-15.0" />
+      <point x="324.34875" y="220.0" />
+      <point x="356.8333333333333" y="220.0" />
+      <point x="-33.375" y="15.0" />
+    </edge>
+    <edge source="design_pattern.builder.IPhoneDirector" target="design_pattern.builder.PhoneDirector">
+      <point x="8.4375" y="-15.0" />
+      <point x="306.51958333333334" y="310.0" />
+      <point x="324.34875" y="310.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7020408163265309" x="289.59055864509605" y="235.9999999999999" />
+  <SelectedNodes>
+    <node>design_pattern.builder.TestBuilder</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

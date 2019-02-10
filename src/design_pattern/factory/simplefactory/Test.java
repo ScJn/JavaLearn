@@ -1,4 +1,5 @@
-package design_pattern.factory;
+package design_pattern.factory.simplefactory;
+
 
 public class Test {
 
