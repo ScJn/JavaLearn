@@ -1,4 +1,4 @@
-package design_pattern;
+package design_pattern.proxy.staticProxy;
 
 public class Proxy {
     public static void main(String[] args) {
