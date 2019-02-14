@@ -1,4 +1,4 @@
-package thread;
+package thread.communication.producerAndComsumer;
 
 public class ProducerCustomer {
 

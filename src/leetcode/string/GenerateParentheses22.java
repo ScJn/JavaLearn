@@ -3,6 +3,14 @@ package leetcode.string;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * use recursive method
+ * three parameters, the String, the remainLeft and the remainRight
+ * remainRight==0 means over;
+ * two possibilities , one is remainLeft==remainRight, you can only plus the '(',
+ * invoke the method recursively with the remainLeft-1, the other is remainLeft>remainRight,
+ * you can invoke both two way, make sure you have remainLeft.
+ */
 public class GenerateParentheses22 {
     List<String> list = new ArrayList<>();
 
