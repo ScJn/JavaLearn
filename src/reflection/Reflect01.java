@@ -1,9 +1,7 @@
 package reflection;
 
-import leetcode.Sum;
+import leetcode.array.Sum;
 
-import java.io.File;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -11,7 +9,7 @@ import java.lang.reflect.Method;
 public class Reflect01 {
 
     public static void main(String[] args) throws Exception {
-        Class clazz=Class.forName("leetcode.Sum");
+        Class clazz=Class.forName("leetcode.array.Sum");
 
         System.out.println(clazz.getName()); //全名
         System.out.println(clazz.getSimpleName());

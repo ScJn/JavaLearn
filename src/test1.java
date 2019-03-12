@@ -21,10 +21,7 @@ public class test1 {
         return flag?(int)(-res):(int)res;
     }
     public static void main(String[] args) {
-        test1 t=new test1();
-        System.out.println(t.reverse(-1230));
-        System.out.println(t.reverse(1593236469));
-        System.out.println(Integer.MAX_VALUE);
+        System.out.println("2019-02-08 19:45:46".substring(0,16));
     }
 
 }

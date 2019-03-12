@@ -15,6 +15,9 @@ public class Dcl implements Serializable {
     //饿汉式 new
     private static volatile Dcl instance;//懒汉式,类的静态成员变量为本类
 
+    /**
+     *  avoid reflection break
+     */
     private Dcl() {
         if(null!=instance)throw new RuntimeException();
     }
