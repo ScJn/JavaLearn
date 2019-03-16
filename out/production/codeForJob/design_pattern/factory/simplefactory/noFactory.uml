@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="98.0" y="0.0">design_pattern.factory.Car</node>
+    <node x="96.0" y="160.0">design_pattern.factory.Test</node>
+    <node x="92.0" y="80.0">design_pattern.factory.BMW</node>
+    <node x="0.0" y="80.0">design_pattern.factory.BYD</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="design_pattern.factory.BMW" target="design_pattern.factory.Car">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="design_pattern.factory.Test" target="design_pattern.factory.Car">
+      <point x="24.000000000000004" y="-15.0" />
+      <point x="156.0" y="135.0" />
+      <point x="182.5" y="135.0" />
+      <point x="182.5" y="55.0" />
+      <point x="154.66666666666669" y="55.0" />
+      <point x="22.666666666666686" y="15.0" />
+    </edge>
+    <edge source="design_pattern.factory.BYD" target="design_pattern.factory.Car">
+      <point x="0.0" y="-15.0" />
+      <point x="36.0" y="55.0" />
+      <point x="109.33333333333331" y="55.0" />
+      <point x="-22.66666666666667" y="15.0" />
+    </edge>
+    <edge source="design_pattern.factory.Test" target="design_pattern.factory.BYD">
+      <point x="-24.0" y="-15.0" />
+      <point x="108.0" y="135.0" />
+      <point x="36.0" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="design_pattern.factory.Test" target="design_pattern.factory.BMW">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="37.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
