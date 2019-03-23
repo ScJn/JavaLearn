@@ -16,6 +16,6 @@ public class TestAdapter {
 
         press(new KeyUSBAdapter2());
 
-        InputStream in=new BufferedInputStream(new FileInputStream("ds"));
+        InputStream in=new BufferedInputStream(new FileInputStream(""));
     }
 }

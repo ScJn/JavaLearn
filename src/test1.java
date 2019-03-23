@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 public class test1 {
+    String aa = "aa";
     public int reverse(int x) {
         long res=0;
         boolean flag=false;
@@ -24,4 +25,14 @@ public class test1 {
         System.out.println("2019-02-08 19:45:46".substring(0,16));
     }
 
+
+
+}
+
+class Atest{
+    String a = "ss";
+
+    public static void main(String[] args) {
+
+    }
 }

@@ -23,12 +23,6 @@ public class LowHouseFactory implements HouseFactory {
     }
 
     public static void main(String[] args) {
-        Calendar calendar=Calendar.getInstance();
-        try {
-            Connection connection=DriverManager.getConnection("");
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }
