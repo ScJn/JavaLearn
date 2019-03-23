@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="155.0">design_pattern.adapter.TestAdapter</node>
+    <node x="167.0" y="80.0">design_pattern.adapter.KeyUSBAdapter</node>
+    <node x="55.5" y="0.0">design_pattern.adapter.USB</node>
+    <node x="219.5" y="0.0">design_pattern.adapter.KeyBorad</node>
+    <node x="0.0" y="80.0">design_pattern.adapter.KeyUSBAdapter2</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="design_pattern.adapter.KeyUSBAdapter" target="design_pattern.adapter.KeyBorad">
+      <point x="35.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="design_pattern.adapter.KeyUSBAdapter" target="design_pattern.adapter.USB">
+      <point x="-35.0" y="-15.0" />
+      <point x="202.0" y="55.0" />
+      <point x="109.5" y="55.0" />
+      <point x="18.0" y="15.0" />
+    </edge>
+    <edge source="design_pattern.adapter.KeyUSBAdapter2" target="design_pattern.adapter.USB">
+      <point x="0.0" y="-15.0" />
+      <point x="-18.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="0.0" />
+  <SelectedNodes>
+    <node>design_pattern.adapter.KeyBorad</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
