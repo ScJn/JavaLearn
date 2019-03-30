@@ -1,5 +1,7 @@
 package classLoad;
 
+import DataStructure.MyHeap;
+
 /**
  * for the 4 classLoader
  */
@@ -14,5 +16,7 @@ public class ClassLoad02 {
         System.out.println(string.getClass().getClassLoader());
         ClassLoadTest01 test01=new ClassLoadTest01();
         System.out.println(test01.getClass().getClassLoader());
+
+        MyHeap a = new MyHeap();
     }
 }

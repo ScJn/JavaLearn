@@ -4,12 +4,11 @@ package DataStructure;
 import java.util.Comparator;
 
 public class MyHeap<E>{
+    String aa = "aa";
 
-    private final Comparator<? super E> comparator;
 
+    public MyHeap() {
 
-    public MyHeap(Comparator<? super E> comparator) {
-        this.comparator = comparator;
     }
 
 

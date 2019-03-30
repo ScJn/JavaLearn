@@ -10,20 +10,25 @@ public class ExcutorTest {
 
     public static void main(String[] args) throws InterruptedException {
         ExecutorService service = Executors.newFixedThreadPool(3);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             int t = 0;
             service.execute(() -> {
-
-                System.out.println(Thread.currentThread().getName());
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                while (true) {
+                    System.out.println(Thread.currentThread().getName());
+//                    try {
+//                        Thread.sleep(100);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
                 }
 
             });
         }
 
+
+    }
+
+    static void testTe(ExecutorService service) throws InterruptedException {
         System.out.println(service);
         service.shutdown();
         //dead
@@ -34,6 +39,5 @@ public class ExcutorTest {
 
         Thread.sleep(1000);
         System.out.println(service);
-
     }
 }

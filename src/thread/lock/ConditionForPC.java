@@ -23,10 +23,9 @@ public class ConditionForPC {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                lock.unlock();
 
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -40,8 +39,7 @@ public class ConditionForPC {
                     System.out.println("t2");
                     c3.signalAll();
                     c2.await();
-                    lock.unlock();
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -55,8 +53,7 @@ public class ConditionForPC {
                     System.out.println("t3");
                     c1.signalAll();
                     c3.await();
-                    lock.unlock();
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
