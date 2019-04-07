@@ -11,18 +11,18 @@ public class ClassLoadTest01 {
     }
     public static void main(String[] args) throws Exception {
 
-//        m4();
+//        m3();
 
 //        Active reference: 3 ways
         TestClass testClass=new TestClass();
-        Class cl=Class.forName("classLoad.TestClass");
-        System.out.println(TestClass.name);
+//        Class cl=Class.forName("classLoad.TestClass");
+//        System.out.println(TestClass.name);
 
 //        passive reference: 4 ways
-        System.out.println(TestClass.MAX);
-        TestClass[] ts=new TestClass[10];
-        System.out.println(TestClass.height);  //load the father class
-        System.out.println(TestClass.MIN);
+//        System.out.println(TestClass.MAX);
+//        TestClass[] ts=new TestClass[10];
+//        System.out.println(TestClass.height);  //load the father class
+//        System.out.println(TestClass.MIN);
     }
 
 
