@@ -1,6 +1,6 @@
 package leetcode.xiaozhao.tencent;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Tencent07 {
 
@@ -12,18 +12,37 @@ public class Tencent07 {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
-        k = in.nextInt();
-        a = in.nextInt();
-        aNum = in.nextInt();
-        b = in.nextInt();
-        bNum = in.nextInt();
-        sum = 0;
-        int max = Math.max(aNum,bNum);
-        com = new int[max+5][max+5];
-        A = new int[max+5][max+5];
-        dfs(k, aNum, bNum);
-        System.out.println(sum/2);
+//        k = in.nextInt();
+//        a = in.nextInt();
+//        aNum = in.nextInt();
+//        b = in.nextInt();
+//        bNum = in.nextInt();
+//        sum = 0;
+//        int max = Math.max(aNum,bNum);
+//        com = new int[max+5][max+5];
+//        A = new int[max+5][max+5];
+//        dfs(k, aNum, bNum);
+//        System.out.println(sum/2);
 
+
+        class Node{
+            int e;
+            int w;
+            Node(int e,int w){
+                this.e=e;
+                this.w=w;
+            }
+        }
+        Map<Integer,List<Node>> map=new HashMap<>();
+        ArrayList<List<Node>> arrayList=new ArrayList<>();
+        for(int i=0;i<=5;i++){
+            int b=in.nextInt();
+            int e =in.nextInt();
+            int w= in.nextInt();
+            map.putIfAbsent(b, new LinkedList<>());
+            map.get(b).add(new Node(e,w));
+        }
+        System.out.println("sd");
 
     }
 
