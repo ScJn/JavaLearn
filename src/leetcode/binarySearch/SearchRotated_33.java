@@ -23,4 +23,6 @@ public class SearchRotated_33 {
         int c=new SearchRotated_33().search(new int[]{1,3},3);
         System.out.println(c);
     }
+
+
 }

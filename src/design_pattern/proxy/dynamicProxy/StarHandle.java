@@ -7,9 +7,9 @@ import java.lang.reflect.Method;
 
 public class StarHandle implements InvocationHandler {
 
-    RealStar star;
+    Star star;
 
-    public StarHandle(RealStar star) {
+    public StarHandle(Star star) {
         this.star = star;
     }
 
