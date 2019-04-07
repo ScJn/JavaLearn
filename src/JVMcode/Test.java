@@ -12,6 +12,7 @@ public class Test {
         for(GarbageCollectorMXBean b : list) System.out.println(b.getName());
         HashMap a;
         System.out.println("SADADASDASDAS");
+
     }
 
 }
