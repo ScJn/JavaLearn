@@ -1,7 +1,6 @@
 package leetcode;
 
-import java.util.HashSet;
-import java.util.Scanner;
+import java.util.*;
 
 public class LongestSubstring3 {
     public static void main(String[] args) {
@@ -32,5 +31,18 @@ public class LongestSubstring3 {
             }
             System.out.println(maxSize);
         }
+    }
+}
+class S{
+    public static void main(String[] args) {
+
+        Integer[] a={1,2,3};
+        List<Integer> list = Arrays.asList(a);
+        Iterator<Integer> it=list.iterator();
+        while(it.hasNext()){
+            Integer x = it.next();
+            if(x==1)it.remove();
+        }
+        System.out.println(list);
     }
 }

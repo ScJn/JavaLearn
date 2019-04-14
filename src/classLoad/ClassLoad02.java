@@ -14,8 +14,8 @@ public class ClassLoad02 {
 //        System.out.println(System.getProperty("java.class.path"));
         String string=new String("sdd");
         System.out.println(string.getClass().getClassLoader());
-        ClassLoadTest01 test01=new ClassLoadTest01();
-        System.out.println(test01.getClass().getClassLoader());
+//        ClassLoadTest01 test01=new ClassLoadTest01();
+//        System.out.println(test01.getClass().getClassLoader());
 
         MyHeap a = new MyHeap();
     }
