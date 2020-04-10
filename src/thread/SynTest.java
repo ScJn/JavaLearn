@@ -31,7 +31,7 @@ public class SynTest {
             }
         }
 
-        // synchronized method, not efficient
+        // synchronized method, is not efficient
         synchronized void test1() {
             test();
         }

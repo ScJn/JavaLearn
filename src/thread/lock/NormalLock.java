@@ -1,4 +1,4 @@
-package thread;
+package thread.lock;
 
 /**
  * 不可重入锁
@@ -6,7 +6,7 @@ package thread;
 public class NormalLock {
     private boolean isLocked = false;
 
-    public synchronized void lock() throws InterruptedException {
+    public void lock() throws InterruptedException {
 
         while (isLocked) {
             wait();
@@ -15,7 +15,7 @@ public class NormalLock {
 
     }
 
-    public synchronized void unlock() {
+    public void unlock() {
         isLocked = false;
         notify();
     }
