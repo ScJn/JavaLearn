@@ -1,96 +1,64 @@
-package leetcode;
+        int min2 = min(i, j);
+        int x1 = i - min2, y1 = j - min2;
+        for(int d = 0; d + x1 < n && d + y1 < n; d ++){
+            if(a[x1 + d][y1 + d]) return false;
+        }
 
-import java.io.*;
-import java.util.*;
-
-public class ForClass extends ArrayList implements Serializable, Runnable {
-
-    private String isString;
-    public int isInt;
-    private ArrayList<String> arrayList = null;
-
-    private LinkedList<String> linkedList;
-    private TreeMap<String, String> treeMap;
-    private HashSet<Object> objects;
-    private TreeSet<Object> objectTreeSet;
-
-    @Override
-    public void run() {
-
-        File dest=new File("dest");
-        OutputStream out=null;
-        try {
-            out=new FileOutputStream(dest,false);//if append set true
-            String msg="come on!";
-            byte[] data=msg.getBytes();
-            out.write(data,0,data.length);
-            out.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        int x2 = i + min2, y2 = ;
+        for(int d = 0; x1 - d >= 0 && d + y1 < n; d ++){
+            if(a[x1 + d][y1 + d]) return false;
+        }
+        for(int aw = 0; aw + i < n && j + aw < n; aw ++){
+            if(a[i+aw][j+aw])return false;
         }
 
 
-    }
+        class Main {
 
-    private String fReString(int a, String b) {
-        int c = a;
-        c += 1;
-        String cc = String.valueOf(c);
-        return b + cc;
-    }
+            public static void main(String[] args) {
 
-    public int aa(int a, int b) {
-        return a + b;
-    }
+                int n, m;
+                Scanner in = new Scanner(System.in);
+                n = in.nextInt();
+                m = in.nextInt();
 
-    public static void copyFile(String srcPath,String destPath){
-        InputStream is = null;
-        OutputStream out=null;
-
-        try {
-            is = new FileInputStream(srcPath);
-            int len=-1;
-            byte[] buffer=new byte[1024*10];
-            out=new FileOutputStream(destPath,true);//if append set true
-            while ((len = is.read(buffer)) != -1) {
-                out.write(buffer,0,len);
-            }
-            out.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            // close the last open one, then the first one
-            try {
-                if (out != null) {
-                    out.close();
+                int[] a = new int[n];
+                int[] w = new int[n];
+                for (int i = 0; i < n; i++) {
+                    a[i] = in.nextInt();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                if (is != null) {
-                    is.close();
+                int sumw = 0;
+                for (int i = 0; i < n; i++) {
+                    w[i] = in.nextInt();
+                    sumw += w[i];
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+                int sum = n;
+                int be = 0;
+                while (sum != 1) {
+                    int step;
+                    for (step = 0; step < m; ) {
+                        if (be == n) be = 0;
+                        while (a[be] == -1) {
+                            be += 1;
+                            if (be == n) be = 0;
+                        }
+                        be++;
+                        step += 1;
+                    }
+                    a[be++] = -1;
+                    sum--;
+                }
+                double res = 0;
+                int index;
+                for (index = 0; index < n; index++) {
+                    if (a[index] != -1) {
+                        break;
+                    }
+                }
+                for (int i = 0; i < n; i++) {
+                    res += (w[i] * a[index + i > n ? index + i - n : index + i]) / sumw;
+                }
+                System.out.println(res);
             }
+
         }
-
-    }
-    public static void main(String[] args) {
-        copyFile("D:\\javas\\java_learning\\src\\leetcode\\ForClass.java","aa.txt");
-    }
-
-
-}
-

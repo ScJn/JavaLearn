@@ -8,11 +8,10 @@ public class ReserveList_92 {
         if(head == null || head.next == null)return head;
         ListNode pre = null;
         ListNode ahead = null;
-        for( ListNode cur = head; cur!=null;){
+        for( ListNode cur = head; cur!=null;cur = ahead){
             ahead = cur.next;
             cur.next = pre;
             pre = cur;
-            cur = ahead;
         }
         return pre;
     }

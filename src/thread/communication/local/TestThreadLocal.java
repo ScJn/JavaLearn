@@ -1,6 +1,10 @@
 package thread.communication.local;
 
-public class TestTheadLocal {
+/**
+ * set a value to current thread-A
+ * you can get the value if the thread is thread-A
+ */
+public class TestThreadLocal {
 
     static ThreadLocal<String> local=new ThreadLocal<>();
 
@@ -20,12 +24,3 @@ public class TestTheadLocal {
     }
 }
 
-class Thread1 implements Runnable{
-
-
-
-    @Override
-    public void run() {
-
-    }
-}

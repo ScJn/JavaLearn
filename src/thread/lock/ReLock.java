@@ -1,13 +1,13 @@
-package thread;
+package thread.lock;
 
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ReLock {
     private boolean isLocked = false;
     private Thread nowThread;
-     int count=0;
+    int count = 0;
 
-    public synchronized void lock() throws InterruptedException {
+    public  void lock() throws InterruptedException {
 
         while (isLocked && Thread.currentThread() != nowThread) {
             wait();
@@ -17,27 +17,27 @@ public class ReLock {
         nowThread = Thread.currentThread();
     }
 
-    public synchronized void unLock() {
+    public  void unLock() {
         isLocked = false;
-        nowThread=null;
-        count=0;
+        nowThread = null;
+        count = 0;
     }
 }
 
 class Test1 {
-    private ReLock reLock=new ReLock();
-    private ReentrantLock lock=new ReentrantLock();
+    private ReLock reLock = new ReLock();
+    private ReentrantLock lock = new ReentrantLock();
 
     public void doA() throws InterruptedException {
         reLock.lock();
-        System.out.println("in doA "+reLock.count);
+        System.out.println("in doA " + reLock.count);
         doB();
         reLock.unLock();
     }
 
     public void doB() throws InterruptedException {
         reLock.lock();
-        System.out.println("in doB "+reLock.count);
+        System.out.println("in doB " + reLock.count);
         reLock.unLock();
 
         Thread.sleep(1000);
