@@ -1,4 +1,4 @@
-package basic;
+package basic.methodAndField;
 
 /**
  * static -> field -> constructor
