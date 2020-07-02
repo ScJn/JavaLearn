@@ -12,11 +12,9 @@ public class SortByBits {
         class Pair implements Comparable<Pair>{
             int v;
             int ov;
-            int index;
-            Pair(int v, int ov, int index){
+            Pair(int v, int ov){
                 this.v = v;
                 this.ov = ov;
-                this.index = index;
             }
 
             @Override
@@ -29,18 +27,18 @@ public class SortByBits {
             int len = arr.length;
             Pair[] bits = new Pair[len];
             for(int i = 0; i < len; i++){
-                int s = arr[i];
+                int os = arr[i];
                 int c = 0;
-                for(; s > 0; s >>= 1){
+                for(int s = os; s > 0; s >>= 1){
                     c += s & 1;
                 }
-                bits[i] = new Pair(c,s, i);
+                bits[i] = new Pair(c,os);
             }
 
             Arrays.sort(bits);
             int[] res = new int[len];
             for(int i = 0; i < len; i++){
-                res[i] = res[bits[i].index];
+                res[i] = bits[i].ov;
             }
             return res;
         }
@@ -50,7 +48,7 @@ public class SortByBits {
     public static void main(String[] args) {
         SortByBits s = new SortByBits();
         Solution solution = s.new Solution();
-        int[] ints = solution.sortByBits(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8});
+        int[] ints = solution.sortByBits(new int[]{1024,512,256,128,64,32,16,8,4,2,1});
         System.out.println(1);
     }
 }
