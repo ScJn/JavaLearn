@@ -26,3 +26,4 @@
 /.nb-gradle/
 
 lib
+/out/production/codeForJob/
