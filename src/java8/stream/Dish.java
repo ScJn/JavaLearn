@@ -38,4 +38,10 @@ public class Dish {
         FISH,
         OTHER
     }
+
+    enum Health{
+        HEAT,
+        MIDDLE,
+        LOW
+    }
 }
