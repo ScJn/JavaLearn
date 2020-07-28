@@ -24,6 +24,7 @@ public class Stream1 {
         count(Arrays.stream(a));
     }
 
+
     public static void flatMap(){
         String[] words = {"hello", "world", "and", "you"};
         List<String> collect = Arrays.stream(words)

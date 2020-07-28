@@ -16,12 +16,21 @@ public class Collect {
     static List<Dish> dishes = new ArrayList<>();
 
     public static void main(String[] args) {
-        counting();
+        dishes = Common.init();
+        join();
+    }
+ 
+    public static void join(){
+        String collect = dishes.stream().map(Dish::getName).collect(Collectors.joining(", "));
+        System.out.println(collect);
     }
 
     public static void counting(){
-        dishes = Common.init();
         Long collect = dishes.stream().collect(Collectors.counting());
         System.out.println(collect);
+    }
+
+    public static void sum(){
+
     }
 }
