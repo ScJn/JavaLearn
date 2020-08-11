@@ -33,13 +33,13 @@ public class Dish {
         return type;
     }
 
-    enum Type {
+    public enum Type {
         MEAT,
         FISH,
         OTHER
     }
 
-    enum Health{
+    public enum Health{
         HEAT,
         MIDDLE,
         LOW

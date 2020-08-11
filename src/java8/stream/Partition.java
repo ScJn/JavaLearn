@@ -17,7 +17,6 @@ public class Partition {
     static List<Dish> dishes = new ArrayList<>();
 
     public static void main(String[] args) {
-        getAllPrime();
 
 //        for (int i = 3; i < 100; i++) {
 //            if (isPrime(i)) {
@@ -39,14 +38,14 @@ public class Partition {
                 .noneMatch(a -> num % a == 0);
     }
 
-    public static void getAllPrime(){
-        List<Integer> collect = IntStream.rangeClosed(2, 100)
+    public static void getAllPrime(Integer n){
+        List<Integer> collect = IntStream.rangeClosed(2, n)
                 .filter(Partition::isPrime)
                 .boxed()
                 .collect(toList());
 
-        for (Integer integer : collect) {
-            System.out.println(integer);
-        }
+//        for (Integer integer : collect) {
+//            System.out.println(integer);
+//        }
     }
 }

@@ -1,4 +1,7 @@
-package java8.stream;
+package java8.stream.collect;
+
+import java8.stream.Common;
+import java8.stream.Dish;
 
 import java.util.*;
 import java.util.stream.Collectors;
