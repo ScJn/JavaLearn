@@ -1,6 +1,4 @@
-package java8;
-
-import basic.runtimeTypeInfo.HiddenImpl.A;
+package java8.lambda;
 
 import java.util.*;
 import java.util.function.Function;

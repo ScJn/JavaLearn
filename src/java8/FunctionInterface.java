@@ -1,9 +1,10 @@
 package java8;
 
+import java8.lambda.Banana;
+
 import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**

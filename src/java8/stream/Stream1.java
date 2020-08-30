@@ -1,6 +1,6 @@
 package java8.stream;
 
-import java8.Banana;
+import java8.lambda.Banana;
 
 import java.util.ArrayList;
 import java.util.Arrays;
