@@ -6,10 +6,20 @@ import java.util.function.Supplier;
 
 public class TimeUtils {
 
-    public static <T> void printCosts(Supplier<T> func) {
+    public static void delay() {
+        try {
+            Thread.sleep(100);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static <T> T printCosts(Supplier<T> func) {
         long l = System.nanoTime();
-        System.out.println(func.get());
+//        System.out.println(func.get());
+        T t = func.get();
         System.out.println((System.nanoTime() - l) / 10_000_000);
+        return t;
     }
 
     public static <T, R> void printCosts(Function<T, R> func, T para) {
