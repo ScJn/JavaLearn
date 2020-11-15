@@ -1,6 +1,5 @@
 package java8.future;
 
-import java8.stream.collect.Collect;
 import util.CollectionUtils;
 import util.TimeUtils;
 
@@ -46,14 +45,26 @@ public class Shop {
 //        TimeUtils.printCosts(() -> getPricesAfterDiscountWithCF(shops, executorService));
 //        TimeUtils.printCosts(() -> getPricesAfterDiscountWithCF2(shops, executorService));
 
-        TimeUtils.printCosts(() -> getPricesAfterDiscountAndExchangeParallel(shops));
-        TimeUtils.printCosts(() -> getPricesAfterDiscountAndExchangeCF(shops,executorService));
+//        TimeUtils.printCosts(() -> getPricesAfterDiscountAndExchangeParallel(shops));
+//        TimeUtils.printCosts(() -> getPricesAfterDiscountAndExchangeCF(shops, executorService));
+
+        CompletableFuture[] completableFutures = findPricesStream(shops, executorService)
+                .map(future -> future.thenAccept(System.out::println))
+                .toArray(CompletableFuture[]::new);
+        Void join = CompletableFuture.allOf(completableFutures).join();
+
+
+        Thread.sleep(5000);
+        System.out.println("end");
+
     }
 
-    private static List<Shop> getShops(int size) {
-        List<Shop> shops = new ArrayList<>();
-        CollectionUtils.adds(shops, size, () -> new Shop("dada"));
-        return shops;
+    public static Stream<CompletableFuture<Double>> findPricesStream(List<Shop> shops, ExecutorService e) {
+        return shops.stream()
+                .map(shop -> CompletableFuture.supplyAsync(() -> Shop.calculatePrice(shop.name), e))
+                .map(future -> future.thenApply(price -> Discount.getDiscountPrice(price)))
+                .map(future -> future.thenCombine(CompletableFuture.supplyAsync(() -> ExchangeRateService.getExchangeRate("USD", "EUR")),
+                        (price, rate) -> price * rate));
     }
 
     private static List<Double> getPricesAfterDiscountAndExchangeParallel(List<Shop> shops) {
@@ -185,6 +196,13 @@ public class Shop {
             }
         }).start();
         return future;
+    }
+
+
+    private static List<Shop> getShops(int size) {
+        List<Shop> shops = new ArrayList<>();
+        CollectionUtils.adds(shops, size, () -> new Shop("dada"));
+        return shops;
     }
 
     public static double calculatePrice(String product) {
