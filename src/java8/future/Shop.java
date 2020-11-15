@@ -31,7 +31,7 @@ public class Shop {
 
         List<Shop> shops = getShops(40);
 
-        ExecutorService executorService = Executors.newFixedThreadPool(100, r -> {
+        ExecutorService executorService = Executors.newFixedThreadPool(40, r -> {
             Thread t = new Thread(r);
             t.setDaemon(true);
             return t;
@@ -41,34 +41,59 @@ public class Shop {
 //        List<Double> collect1 = TimeUtils.printCosts(() -> getPricesWithCF(shops, executorService));
 //        List<Double> doubles = TimeUtils.printCosts(() -> getPricesParallel(shops));
 
-        TimeUtils.printCosts(() -> getPricesAfterDiscount(shops));
-        TimeUtils.printCosts(() -> getPricesAfterDiscountParallel(shops));
-        TimeUtils.printCosts(() -> getPricesAfterDiscountWithCF(shops,executorService));
+//        TimeUtils.printCosts(() -> getPricesAfterDiscount(shops));
+//        TimeUtils.printCosts(() -> getPricesAfterDiscountParallel(shops));
+//        TimeUtils.printCosts(() -> getPricesAfterDiscountWithCF(shops, executorService));
+//        TimeUtils.printCosts(() -> getPricesAfterDiscountWithCF2(shops, executorService));
+
+        TimeUtils.printCosts(() -> getPricesAfterDiscountAndExchangeParallel(shops));
+        TimeUtils.printCosts(() -> getPricesAfterDiscountAndExchangeCF(shops,executorService));
     }
 
     private static List<Shop> getShops(int size) {
         List<Shop> shops = new ArrayList<>();
-        CollectionUtils.adds(shops, size, ()->new Shop("dada"));
+        CollectionUtils.adds(shops, size, () -> new Shop("dada"));
         return shops;
+    }
+
+    private static List<Double> getPricesAfterDiscountAndExchangeParallel(List<Shop> shops) {
+        return shops.stream()
+                .parallel()
+                .map(shop -> Shop.calculatePrice(shop.name))
+                .map(Discount::getDiscountPrice)
+                .map(price -> price * ExchangeRateService.getExchangeRate("USD", "EUR"))
+                .collect(Collectors.toList());
+    }
+
+    private static List<Double> getPricesAfterDiscountAndExchangeCF(List<Shop> shops, ExecutorService e) {
+        List<CompletableFuture<Double>> collect = shops.stream()
+                .map(shop -> CompletableFuture.supplyAsync(() -> Shop.calculatePrice(shop.name), e))
+                .map(future -> future.thenApply(price -> Discount.getDiscountPrice(price)))
+                .map(future -> future.thenCombine(CompletableFuture.supplyAsync(() -> ExchangeRateService.getExchangeRate("USD", "EUR")),
+                        (price, rate) -> price * rate))
+                .collect(Collectors.toList());
+
+        return collect.stream().map(CompletableFuture::join).collect(Collectors.toList());
     }
 
     /**
      * pipeline of time-consuming invoke
      * calculate and get discount both cost 1s to complete
-     *
+     * <p>
      * but we don't need to wait all price be calculated then to get discount
      * we actually can get one price's discount while get other price simultaneously
+     *
      * @param shops shops
      * @return list of price after discount
      */
-    private static List<Double> getPricesAfterDiscount(List<Shop> shops){
+    private static List<Double> getPricesAfterDiscount(List<Shop> shops) {
         return shops.stream()
                 .map(shop -> Shop.calculatePrice(shop.name))
                 .map(Discount::getDiscountPrice)
                 .collect(Collectors.toList());
     }
 
-    private static List<Double> getPricesAfterDiscountParallel(List<Shop> shops){
+    private static List<Double> getPricesAfterDiscountParallel(List<Shop> shops) {
         return shops.stream()
                 .parallel()
                 .map(shop -> Shop.calculatePrice(shop.name))
@@ -76,16 +101,30 @@ public class Shop {
                 .collect(Collectors.toList());
     }
 
-    private static List<Double> getPricesAfterDiscountWithCF(List<Shop> shops, ExecutorService e){
-        Stream<CompletableFuture<Double>> completableFutureStream = shops.stream()
-                .map(shop -> CompletableFuture.supplyAsync(() -> Shop.calculatePrice(shop.name),e));
-        List<Double> collect = completableFutureStream
-                .map(CompletableFuture::join).collect(Collectors.toList());
-        Stream<CompletableFuture<Double>> completableFutureStream1 = collect.stream()
-                .map(price -> CompletableFuture.supplyAsync(() -> Discount.getDiscountPrice(price),e));
-        return completableFutureStream1
-                .map(CompletableFuture::join)
+    /**
+     * pay attention, we need to map first, then use join to return Double
+     * price, the para of thenCompose, is the result of future
+     *
+     * @param shops
+     * @param e
+     * @return
+     */
+    private static List<Double> getPricesAfterDiscountWithCF(List<Shop> shops, ExecutorService e) {
+        List<CompletableFuture<Double>> collect = shops.stream()
+                .map(shop -> CompletableFuture.supplyAsync(() -> Shop.calculatePrice(shop.name), e))
+                .map(future -> future.thenCompose(price -> CompletableFuture.supplyAsync(() -> Discount.getDiscountPrice(price), e)))
                 .collect(Collectors.toList());
+
+        return collect.stream().map(CompletableFuture::join).collect(Collectors.toList());
+    }
+
+    private static List<Double> getPricesAfterDiscountWithCF2(List<Shop> shops, ExecutorService e) {
+        List<CompletableFuture<Double>> collect = shops.stream()
+                .map(shop -> CompletableFuture.supplyAsync(() -> Shop.calculatePrice(shop.name), e))
+                .map(future -> future.thenApply(price -> Discount.getDiscountPrice(price)))
+                .collect(Collectors.toList());
+
+        return collect.stream().map(CompletableFuture::join).collect(Collectors.toList());
     }
 
     /**
@@ -94,11 +133,13 @@ public class Shop {
     private static List<Double> getPrices(List<Shop> shops) {
         return shops.stream().map(shop1 -> calculatePrice(shop1.name)).collect(Collectors.toList());
     }
+
     /**
      * use completableFuture to get prices
      * CF and parallel they both internally use the same common pool that by default has
      * a fixed number of threads equals to your machine's core
      * but CF can set the size
+     *
      * @param shops shops
      * @return prices
      */
@@ -113,12 +154,11 @@ public class Shop {
     /**
      * parallel one
      */
-    public static List<Double> getPricesParallel(List<Shop> shops){
-       return shops.stream().parallel()
+    public static List<Double> getPricesParallel(List<Shop> shops) {
+        return shops.stream().parallel()
                 .map(shop1 -> calculatePrice(shop1.name))
                 .collect(Collectors.toList());
     }
-
 
 
     public double getPrice(String product) {
